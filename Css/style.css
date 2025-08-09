@@ -185,7 +185,7 @@ header.scrolled .logo img {
   opacity: 0.9;
   color: black;
 }
-
+/* Forecast Grid */
 .forecast-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -194,9 +194,13 @@ header.scrolled .logo img {
   margin: 0 auto;
 }
 
+.forecast-item {
+  text-align: center;
+}
+
 .forecast-item img {
   max-width: 150px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
@@ -205,49 +209,150 @@ header.scrolled .logo img {
   transform: translateY(-5px);
 }
 
+/* Arrow sits between icon and name */
+.forecast-item .arrow {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: #333;
+  margin-bottom: 0.6rem;
+}
+
+.forecast-item .arrow::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.forecast-item .arrow::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: -3px;
+  border-left: 5px solid #333;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* Name */
 .forecast-item h3 {
   font-family: 'Playfair Display', serif;
-  margin: 0.5rem 0 1.5rem 0;
   font-size: 1.3rem;
   font-weight: 500;
   color: #333;
   letter-spacing: 0.5px;
-  position: relative;
+  margin-bottom: 0.3rem;
 }
 
-.forecast-item h3::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 1px;
-  background: #333;
-}
-
-.forecast-item h3::before {
-  content: '';
-  position: absolute;
-  bottom: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #333;
-}
-
+/* Date */
 .forecast-item .date {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
-  font-weight: bolder;
-  opacity: 0.8;
+  font-weight: bold;
   letter-spacing: 0.5px;
-  color: black;
   text-transform: uppercase;
-  margin-top: 0.5rem;
+  color: black;
+  opacity: 0.8;
+}
+.subscribe-section {
+  background: url("Images/grey_sparkle_01.jpg") center/cover no-repeat;
+  padding: 80px 0 100px; /* generous top and bottom padding */
+}
+
+.subscribe-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subscribe-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 60px; /* increased space before form */
+}
+
+.subscribe-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;             /* wider gap between input fields */
+  max-width: 1000px;
+  margin: 0 auto 70px;     /* more bottom margin before planets */
+  align-items: end;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  font-size: 14px;
+  padding: 5px 0;
+}
+
+.submit button {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #000;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+.planets {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;                /* more space between planet images */
+}
+
+.planets img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .forecast-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .forecast {
+    padding: 4rem 2rem;
+  }
+
+  .forecast-item img {
+    width: 70px;
+  }
 }
 
 /* Responsive */
