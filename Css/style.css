@@ -1,14 +1,89 @@
 /* Reset */
-* {
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
   margin: 0;
   padding: 0;
+}
+
+html {
   box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+header,
+.navbar,
+.logo img,
+.nav-links,
+.nav-links li a,
+.hero,
+.hero-content,
+.hero-image,
+.forecast,
+.forecast-header,
+.forecast-grid,
+.forecast-item,
+.forecast-item img,
+.forecast-item .arrow,
+.forecast-item h3,
+.forecast-item .date,
+.subscribe-section,
+.subscribe-container,
+.subscribe-title,
+.subscribe-subtitle,
+.subscribe-forms-wrapper,
+.subscribe-form,
+.form-group,
+.form-group label,
+.form-group input,
+.submit-btn button,
+.aligned-planets,
+.aligned-planets .planet-col,
+.planets img {
+  box-sizing: inherit;
 }
 
 body {
   font-family: 'Cormorant Garamond', serif;
   background: #fff;
-  color: #222;
+  color: #161616;
+  /* slightly darker for stronger contrast */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* crisper text on WebKit */
+  -moz-osx-font-smoothing: grayscale;
+  /* macOS Firefox */
+  text-rendering: optimizeLegibility;
+  /* improved kerning */
 }
 
 /* Navbar */
@@ -61,6 +136,96 @@ header.scrolled .logo img {
   gap: 52px;
   /* a bit more airy */
   list-style: none;
+}
+
+/* Mobile nav toggle (hidden desktop) */
+.nav-toggle {
+  display: none;
+  background: #fff;
+  border: 1px solid #000;
+  width: 46px;
+  height: 42px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle .bar {
+  width: 22px;
+  height: 2px;
+  background: #000;
+  display: block;
+  transition: transform .4s ease, opacity .3s ease;
+}
+
+.nav-toggle.active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width:880px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding: 110px 40px 40px;
+    gap: 34px;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, .08);
+    transition: left .45s ease;
+  }
+
+  .nav-links.open {
+    left: 0;
+  }
+
+  .nav-links li a {
+    font-size: 14px;
+    letter-spacing: 1.6px;
+  }
+
+  .nav-toggle {
+    display: flex;
+    position: relative;
+    z-index: 1200;
+  }
+
+  header.scrolled .nav-toggle {
+    background: #fff;
+  }
+
+  /* Place toggle left, then logo */
+  .navbar {
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+  .nav-toggle {
+    order: 0;
+    margin-right: 6px;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .navbar {
+    padding: 18px 20px;
+  }
 }
 
 .nav-links li a {
@@ -185,6 +350,7 @@ header.scrolled .logo img {
   opacity: 0.9;
   color: black;
 }
+
 /* Forecast Grid */
 .forecast-grid {
   display: grid;
@@ -196,11 +362,13 @@ header.scrolled .logo img {
 
 .forecast-item {
   text-align: center;
+  padding: 10px 6px 20px;
+  position: relative;
 }
 
 .forecast-item img {
-  max-width: 150px;
-  margin-bottom: 0.6rem;
+  max-width: 140px;
+  margin-bottom: 0.55rem;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
@@ -212,42 +380,61 @@ header.scrolled .logo img {
 /* Arrow sits between icon and name */
 .forecast-item .arrow {
   position: relative;
-  display: inline-block;
-  width: 28px;
+  display: block;
+  width: 92px;
   height: 1px;
-  background: #333;
-  margin-bottom: 0.6rem;
+  background: #111;
+  margin: 0.75rem auto 0.55rem;
+  transition: background .35s ease, width .45s ease;
 }
 
 .forecast-item .arrow::before {
   content: '';
   position: absolute;
-  left: -6px;
-  top: -3px;
-  width: 6px;
-  height: 6px;
-  background: #333;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  background: #111;
   border-radius: 50%;
+  transition: background .35s ease;
 }
 
 .forecast-item .arrow::after {
   content: '';
   position: absolute;
-  right: -5px;
-  top: -3px;
-  border-left: 5px solid #333;
-  border-top: 3px solid transparent;
-  border-bottom: 3px solid transparent;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 8px solid #111;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transition: border-left-color .35s ease;
 }
 
 /* Name */
 .forecast-item h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: #333;
   letter-spacing: 0.5px;
   margin-bottom: 0.3rem;
+}
+
+/* Arrow hover accent */
+.forecast-item:hover .arrow {
+  background: #7f3fbf;
+  width: 106px;
+}
+
+.forecast-item:hover .arrow::before {
+  background: #7f3fbf;
+}
+
+.forecast-item:hover .arrow::after {
+  border-left-color: #7f3fbf;
 }
 
 /* Date */
@@ -260,95 +447,296 @@ header.scrolled .logo img {
   color: black;
   opacity: 0.8;
 }
+
+/* Mobile forecast refinements */
+@media (max-width:760px) {
+  .forecast {
+    padding: 4rem 1.6rem 3.2rem;
+  }
+
+  .forecast-header h2 {
+    font-size: 2.1rem;
+  }
+
+  .forecast-header p {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 46px 24px;
+  }
+
+  .forecast-item {
+    padding: 6px 4px 18px;
+  }
+
+  .forecast-item img {
+    max-width: 104px;
+  }
+
+  .forecast-item h3 {
+    font-size: 1rem;
+    margin-bottom: .35rem;
+    letter-spacing: .4px;
+  }
+
+  .forecast-item .arrow {
+    margin-bottom: .4rem;
+    transform: scale(.9);
+  }
+
+  .forecast-item .date {
+    font-size: 9px;
+    letter-spacing: .6px;
+  }
+}
+
+@media (max-width:480px) {
+  .forecast-grid {
+    gap: 40px 20px;
+  }
+
+  .forecast-item img {
+    max-width: 96px;
+  }
+
+  .forecast-item h3 {
+    font-size: .95rem;
+
+    @media (max-width:560px) {
+      .forecast-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+      }
+
+      .forecast-item {
+        padding: 4px 0 16px;
+      }
+
+      .forecast-item img {
+        max-width: 120px;
+      }
+
+      .forecast-item .arrow {
+        transform: none;
+        width: 88px;
+      }
+
+      .forecast-item:hover .arrow {
+        width: 100px;
+      }
+    }
+  }
+}
+
+/* Subscribe Section (Pixel-match attempt) */
 .subscribe-section {
-  background: url("../Images/grey_sparkle_01.jpg") center/cover no-repeat;
-  padding: 120px 0;
+  background: url("../Images/grey_sparkle_01.jpg") center top repeat-y;
+  padding: 140px 0 120px;
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
+  position: relative;
+}
+
+.subscribe-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 70px;
 }
 
 .subscribe-title {
-  font-size: 48px;
+  font-size: 64px;
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+  line-height: 1;
 }
 
 .subscribe-subtitle {
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-  margin-bottom: 70px;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.6px;
+  margin-bottom: 105px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Wrapper to keep planets aligned under each column */
+.subscribe-forms-wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
 }
 
 .subscribe-form {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 60px;
-  align-items: flex-end;
-  max-width: 1150px;
-  margin: 0 auto 80px;
+  grid-template-columns: 1fr 1fr 1fr 210px;
+  column-gap: 120px;
+  align-items: end;
+  margin: 0 auto 110px;
+  position: relative;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  position: relative;
+  text-align: left;
 }
 
 .form-group label {
-  font-weight: bold;
-  font-size: 15px;
-  margin-bottom: 10px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
 }
 
 .form-group input {
-  background: none;
-  border: none;
-  border-bottom: 1px solid black;
   width: 100%;
-  padding: 8px 0;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px 0 10px 0;
   outline: none;
-  font-size: 15px;
+  position: relative;
 }
 
-.submit-btn {
-  display: flex;
-  align-items: flex-end;
+/* Removed leading dot before first input */
+.subscribe-form .fg-name::before {
+  content: none;
+}
+
+/* Removed connector line/arrow for cleaner layout */
+.subscribe-form .fg-sign::after,
+.subscribe-form .fg-sign::before {
+  content: none;
 }
 
 .submit-btn button {
   background: none;
   border: none;
-  font-weight: bold;
-  letter-spacing: 1px;
-  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1.2px;
   cursor: pointer;
-  font-size: 14px;
-  font-family: 'Open Sans', sans-serif;
+  padding: 0 0 8px;
+  position: relative;
+  color: #000;
+  transition: color .3s ease;
 }
 
 .submit-btn button::after {
   content: '';
-  display: block;
-  height: 2px;
-  background: black;
-  margin-top: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 92px;
+  height: 3px;
+  background: #000;
 }
 
-/* Planets Section */
-.planets {
+.submit-btn button:hover {
+  color: #7f3fbf;
+}
+
+.submit-btn button:hover::after {
+  background: #7f3fbf;
+}
+
+.submit-btn button:focus-visible {
+  outline: none;
+  color: #7f3fbf;
+}
+
+/* Planets row mimic spacing under form columns */
+.aligned-planets {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 210px;
+  column-gap: 120px;
+}
+
+.aligned-planets .planet-col {
   display: flex;
   justify-content: center;
-  gap: 80px; /* Increased gap */
 }
 
 .planets img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+
+  .subscribe-form,
+  .aligned-planets {
+    column-gap: 70px;
+    grid-template-columns: 1fr 1fr 1fr 180px;
+  }
+
+  .planets img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 990px) {
+  .subscribe-form {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 60px;
+  }
+
+  .aligned-planets {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
+  }
+
+  .fg-sign::after,
+  .fg-sign::before {
+    display: none;
+  }
+
+  .submit-btn button::after {
+    width: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .subscribe-container {
+    padding: 0 28px;
+  }
+
+  .subscribe-title {
+    font-size: 48px;
+  }
+
+  .subscribe-subtitle {
+    margin-bottom: 60px;
+  }
+
+  .subscribe-form {
+    grid-template-columns: 1fr;
+    row-gap: 50px;
+    column-gap: 0;
+    margin-bottom: 70px;
+  }
+
+  .aligned-planets {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  .planets img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .fg-name::before {
+    transform: translate(0, 5px);
+    left: -14px;
+  }
 }
 
 
@@ -424,5 +812,533 @@ header.scrolled .logo img {
   .hero-image img {
     max-width: 95%;
     margin-left: 0;
+  }
+}
+
+/* ================= Astro Blog Section ================= */
+.astro-blog {
+  padding: 150px 0 170px;
+  background: #fff;
+}
+
+.astro-blog-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 70px;
+}
+
+.blog-header {
+  text-align: center;
+  margin: 0 0 110px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.7px;
+  margin-bottom: 30px;
+}
+
+.blog-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -.5px;
+  color: #111;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 120px;
+  align-items: start;
+}
+
+/* Card */
+.blog-card {
+  text-align: center;
+  position: relative;
+}
+
+.blog-image {
+  width: 320px;
+  /* slightly increased for closer match */
+  margin: 0 auto 48px;
+  /* tighter gap below image */
+  position: relative;
+}
+
+.blog-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  object-fit: contain;
+  transition: filter .5s ease;
+}
+
+/* Subtle hover color/scale effect */
+.blog-card:hover .blog-image img {
+  /* Slight tonal lift without scaling */
+  filter: brightness(1.05) saturate(1.12);
+}
+
+.blog-meta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  /* reduced space before title */
+}
+
+.blog-post-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 0 22px;
+  letter-spacing: .35px;
+  color: #111;
+}
+
+.blog-excerpt {
+  max-width: 480px;
+  margin: 0 auto 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.4px;
+  line-height: 1.58;
+  color: #222;
+  letter-spacing: .25px;
+  font-weight: 500;
+}
+
+/* View More CTA */
+.blog-footer-cta {
+  text-align: center;
+  /* Increased to match larger whitespace on reference site between cards and CTA */
+  margin-top: 140px;
+}
+
+.blog-view-more {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  padding: 0 0 14px;
+}
+
+.blog-view-more:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 98px;
+  height: 3px;
+  background: #000;
+  transition: background .3s ease, width .35s ease;
+}
+
+.blog-view-more:hover {
+  color: #7f3fbf;
+}
+
+.blog-view-more:hover:after {
+  background: #7f3fbf;
+  width: 104px;
+}
+
+.blog-view-more:focus-visible {
+  outline: none;
+  color: #7f3fbf;
+}
+
+/* Read more line w/ dot & arrow */
+.blog-readmore {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  height: 16px;
+  width: 120px;
+}
+
+.rm {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.rm-dot {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background: #000;
+  border-radius: 50%;
+  transition: background .3s ease;
+}
+
+.rm-bar {
+  position: absolute;
+  left: 14px;
+  right: 30px;
+  top: 50%;
+  height: 1px;
+  background: #000;
+  transform: translateY(-50%);
+  transition: width .35s ease, right .35s ease;
+}
+
+.rm-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 18px;
+  height: 1px;
+  background: #000;
+  transform: translateY(-50%);
+}
+
+.rm-arrow:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 6px solid #000;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* Hover effect */
+.blog-card:hover .rm-bar {
+  right: 40px;
+}
+
+.blog-card:hover .rm-dot {
+  background: #7f3fbf;
+}
+
+.blog-card:hover .rm-arrow,
+.blog-card:hover .rm-arrow:after {
+  background: #7f3fbf;
+  border-left-color: #7f3fbf;
+}
+
+/* Accessibility focus */
+.blog-readmore:focus-visible .rm-dot {
+  outline: 2px solid #7f3fbf;
+  outline-offset: 3px;
+}
+
+@media (max-width:1350px) {
+  .astro-blog-container {
+    padding: 0 100px;
+  }
+
+  .blog-image {
+    width: 340px;
+    /* keep within column width while a bit larger */
+  }
+
+  .blog-title {
+    font-size: 80px;
+  }
+}
+
+@media (max-width:1300px) {
+  .astro-blog-container {
+    padding: 0 80px;
+  }
+
+  .blog-grid {
+    gap: 120px;
+  }
+
+  .blog-image {
+    width: 320px;
+    /* unchanged here acts as smooth step */
+  }
+
+  .blog-title {
+    font-size: 68px;
+  }
+}
+
+@media (max-width:1100px) {
+  .blog-grid {
+    gap: 100px;
+  }
+
+  .blog-image {
+    width: 310px;
+  }
+
+  .blog-post-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width:980px) {
+  .blog-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 110px 70px;
+  }
+
+  .astro-blog {
+    padding: 130px 0 150px;
+  }
+}
+
+@media (max-width:760px) {
+  .blog-title {
+    font-size: 58px;
+  }
+
+  .blog-image {
+    width: 270px;
+  }
+
+  .blog-header {
+    margin-bottom: 90px;
+  }
+}
+
+@media (max-width:640px) {
+  .astro-blog {
+    padding: 110px 0 130px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 90px;
+  }
+
+  .blog-title {
+    font-size: 52px;
+  }
+
+  .blog-image {
+    width: 240px;
+    margin-bottom: 46px;
+  }
+
+  .blog-excerpt {
+    font-size: 12.5px;
+  }
+}
+
+/* ================= Follow Us Section ================= */
+.follow-section {
+  position: relative;
+  background: #fff url('../Images/grey_sparkle_02.jpg') center top repeat-y;
+  padding: 170px 0 160px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.follow-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 70px;
+}
+
+.follow-planets img {
+  width: 100%;
+  max-width: 1180px;
+  height: auto;
+  display: block;
+  margin: 0 auto 140px;
+}
+
+.follow-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 68px;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0 0 54px;
+  letter-spacing: -.4px;
+}
+
+/* Decorative line under title */
+.follow-ornament {
+  position: relative;
+  width: 220px;
+  height: 18px;
+  margin: 0 auto 120px;
+}
+
+.fo-dot {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+  transition: background .3s ease;
+}
+
+.fo-line {
+  position: absolute;
+  left: 16px;
+  right: 34px;
+  top: 50%;
+  height: 1px;
+  background: #000;
+  transform: translateY(-50%);
+  transition: right .35s ease;
+}
+
+.fo-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 20px;
+  height: 1px;
+  background: #000;
+  transform: translateY(-50%);
+}
+
+.fo-arrow:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 7px solid #000;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* Social icons */
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  width: 65px;
+  height: 65px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  font-size: 0;
+  /* hide any text nodes */
+  transition: background .4s ease, color .3s ease, border-color .35s ease;
+}
+
+.social-btn svg {
+  width: 35px;
+  height: 35px;
+}
+
+/* New hover: solid black circle with white glyph */
+.social-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.social-btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+}
+
+/* Ornament hover when hovering any social icon */
+.social-list:hover ~ .follow-ornament .fo-dot,
+.social-list:hover ~ .follow-ornament .fo-arrow,
+.social-list:hover ~ .follow-ornament .fo-arrow:after {
+  background: #7f3fbf;
+  border-left-color: #7f3fbf;
+}
+
+@media (max-width:1100px) {
+  .follow-title {
+    font-size: 60px;
+  }
+
+  .social-btn {
+    width: 96px;
+    height: 96px;
+  }
+
+  .social-btn svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .follow-planets img {
+    margin-bottom: 120px;
+  }
+}
+
+@media (max-width:760px) {
+  .follow-title {
+    font-size: 52px;
+  }
+
+  .social-list {
+    gap: 40px;
+  }
+
+  .social-btn {
+    width: 86px;
+    height: 86px;
+  }
+
+  .social-btn svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .follow-planets img {
+    margin-bottom: 100px;
+  }
+
+  .follow-ornament {
+    margin-bottom: 90px;
+  }
+}
+
+@media (max-width:520px) {
+  .follow-title {
+    font-size: 46px;
+  }
+
+  .social-btn {
+    width: 74px;
+    height: 74px;
+  }
+
+  .social-btn svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .follow-planets img {
+    margin-bottom: 80px;
   }
 }
