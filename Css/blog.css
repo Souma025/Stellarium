@@ -1,0 +1,5 @@
+/* Blog Page Styling */
+body.blog-page {
+  padding-top: 80px;
+  /* Account for fixed navbar */
+}

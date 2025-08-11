@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Stellarium</title>
+  <link rel="stylesheet" href="Css/style.css">
+  <link rel="stylesheet" href="Css/blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="blog-page">
+  <!-- Header/Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><img src="Images/stellerium.png" alt="Stellarium Logo"></a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-mega">
+          <a href="#" class="mega-trigger" aria-haspopup="true" aria-expanded="false">Pages</a>
+          <div class="mega-menu" role="menu" aria-label="Pages submenu">
+            <div class="mega-inner">
+              <div class="mega-col left" role="none">
+                <ul>
+                  <li role="none"><a role="menuitem" href="#" class="main">About</a></li>
+                  <li role="none"><a role="menuitem" href="#">Services</a></li>
+                  <li role="none"><a role="menuitem" href="#">Case Studies</a></li>
+                  <li role="none"><a role="menuitem" href="#">General</a></li>
+                </ul>
+              </div>
+              <div class="mega-divider" aria-hidden="true"></div>
+              <div class="mega-col right" role="none">
+                <ul>
+                  <li role="none"><a role="menuitem" href="#">About Us</a></li>
+                  <li role="none"><a role="menuitem" href="about_me.html">About Me</a></li>
+                  <li role="none"><a role="menuitem" href="#">Events</a></li>
+                  <li role="none"><a role="menuitem" href="#">Testimonials</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#Forecast">Forecast</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="#Shop">Shop</a></li>
+        <li><a href="#Contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Blog Content -->
+  <main class="blog-main">
+    <div class="blog-container">
+      <h1>Blog</h1>
+      <p>Welcome to our blog section. Stay updated with the latest astrology insights and horoscope predictions.</p>
+    </div>
+  </main>
+
+  <script src="Js/script.js"></script>
+</body>
+
+</html>
