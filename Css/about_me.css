@@ -1,0 +1,803 @@
+/* About Me Page Specific Styles */
+body.about-page header {
+  background: transparent;
+}
+
+/* Inner hero (pink textured background) */
+.inner-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 40px 120px;
+  background: url('../Images/hero_inner_about_me.jpg') center top / cover no-repeat;
+}
+
+.inner-hero:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: url('../Images/white_divider_top.png') center top / cover no-repeat;
+  pointer-events: none;
+}
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 86px;
+  line-height: 1.02;
+  font-weight: 500;
+  color: #111;
+  letter-spacing: -.3px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width:760px) {
+  .page-title {
+    font-size: 58px;
+  }
+
+  .inner-hero {
+    padding: 130px 28px 110px;
+  }
+}
+
+/* Mega Dropdown (About page only) */
+.nav-links .has-mega {
+  position: relative;
+}
+
+.mega-trigger {
+  position: relative;
+}
+
+/* base hidden state */
+.mega-menu {
+  position: absolute;
+  left: 50%;
+  top: 62px;
+  transform: translate(-50%, 16px);
+  width: 880px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px -14px rgba(0, 0, 0, .18);
+  border-radius: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .32s ease, transform .38s ease;
+  font-family: 'Montserrat', sans-serif;
+  z-index: 1500;
+  padding: 0;
+}
+
+.mega-inner {
+  display: flex;
+}
+
+/* desktop hover open */
+.has-mega:hover > .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* toggled open (mobile/keyboard) */
+.mega-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* mobile toggle */
+
+/* columns */
+.mega-col {
+  flex: 1;
+  min-width: 50%;
+  padding: 52px 72px 56px;
+}
+
+.mega-col.left {
+  padding-right: 60px;
+}
+
+.mega-col.right {
+  padding-left: 60px;
+}
+
+/* list */
+.mega-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* links */
+.mega-menu a {
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #1b1b1b;
+  display: inline-block;
+  position: relative;
+  padding: 0 0 6px;
+}
+
+.mega-menu a.main {
+  color: #7d7d7d;
+}
+
+.mega-menu a.current-sub {
+  color: #b14be2;
+}
+
+.mega-menu a:hover {
+  color: #b14be2;
+}
+
+.mega-menu a.current-sub:after,
+.mega-menu a:hover:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 2px;
+  background: #b14be2;
+}
+
+/* vertical divider */
+.mega-divider {
+  width: 1px;
+  background: #f3f3f3;
+  box-shadow: -1px 0 0 #fbfbfb, 1px 0 0 #e7e7e7;
+}
+
+@media (max-width:980px) {
+  .mega-menu {
+    position: static;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+  }
+
+  .mega-inner {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .mega-menu.open {
+    display: block;
+  }
+
+  .has-mega:hover > .mega-menu {
+    transform: none;
+  }
+
+  .mega-col {
+    padding: 40px 46px 40px;
+  }
+
+  .mega-col.left {
+    padding-right: 34px;
+  }
+
+  .mega-col.right {
+    padding-left: 34px;
+  }
+}
+
+@media (max-width:640px) {
+  .mega-inner {
+    flex-direction: column;
+  }
+
+  .mega-divider {
+    display: none;
+  }
+
+  .mega-col {
+    padding: 36px 34px 6px;
+  }
+
+  .mega-col.right {
+    padding-top: 6px;
+  }
+}
+
+/* About intro section */
+.about-intro {
+  padding: 160px 0 140px;
+  background: #fff;
+  position: relative;
+}
+
+.about-intro-inner {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 130px;
+  padding: 0 40px;
+  /* light edge breathing room, no centered container */
+}
+
+.about-intro-text {
+  flex: 1;
+}
+
+.about-intro-text h2 {
+  font-size: 68px;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0 0 30px;
+  letter-spacing: -.4px;
+}
+
+/* Meta zodiac list */
+.about-meta {
+  display: flex;
+  gap: 38px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin: 0 0 28px;
+  position: relative;
+  color: #111;
+}
+
+.about-meta li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.about-meta .sign-icon {
+  font-size: 16px;
+  color: #b14be2;
+  line-height: 1;
+  display: inline-block;
+  position: relative;
+  top: -1px;
+}
+
+.about-meta li.active .sign-icon {
+  color: #b14be2;
+}
+
+.about-meta .sign-label {
+  letter-spacing: 2.8px;
+}
+
+/* Decorative divider line with dot + arrow */
+.about-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 180px;
+  height: 16px;
+  position: relative;
+  margin: 0 0 36px;
+}
+
+.about-divider .ad-dot {
+  width: 5px;
+  height: 5px;
+  background: #111;
+  border-radius: 50%;
+  flex: 0 0 5px;
+}
+
+.about-divider .ad-line {
+  height: 1px;
+  background: #111;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.about-divider .ad-arrow {
+  width: 18px;
+  height: 1px;
+  background: #111;
+  position: relative;
+  flex: 0 0 18px;
+}
+
+.about-divider .ad-arrow:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid #111;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* Social icons row */
+.about-social {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0 40px;
+  padding: 0;
+}
+
+.about-social li {
+  list-style: none;
+}
+
+.about-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #b14be2;
+  border-radius: 50%;
+  color: #b14be2;
+  text-decoration: none;
+  transition: background .32s ease, color .32s ease, border-color .32s ease;
+}
+
+.about-social a:hover {
+  background: #b14be2;
+  color: #fff;
+  border-color: #b14be2;
+}
+
+.about-cta {
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.about-intro-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 30px;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: .15px;
+  max-width: none;
+  /* remove text box constraint */
+}
+
+.about-cta {
+  margin-top: 6px;
+  display: inline-block;
+}
+
+/* Chart Section */
+.chart-section {
+  padding: 120px 0 140px;
+  background: #fff;
+  position: relative;
+}
+
+.chart-section-inner {
+  width: 100%;
+  margin: 0;
+  padding: 0 40px;
+}
+
+.chart-header {
+  margin-bottom: 80px;
+}
+
+.chart-main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 500;
+  color: #111;
+  margin: 0 0 32px;
+  letter-spacing: -.4px;
+  line-height: 1.1;
+}
+
+.chart-title-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 180px;
+  height: 16px;
+  position: relative;
+  margin: 0 0 44px;
+}
+
+.chart-title-divider .chart-dot {
+  width: 5px;
+  height: 5px;
+  background: #111;
+  border-radius: 50%;
+  flex: 0 0 5px;
+}
+
+.chart-title-divider .chart-line {
+  height: 1px;
+  background: #111;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.chart-title-divider .chart-arrow {
+  width: 18px;
+  height: 1px;
+  background: #111;
+  position: relative;
+  flex: 0 0 18px;
+}
+
+.chart-title-divider .chart-arrow:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid #111;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+.chart-description-text {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.chart-description-text p {
+  flex: 1;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0;
+  color: #444;
+  font-weight: 400;
+  letter-spacing: .1px;
+}
+
+.chart-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 120px;
+}
+
+.chart-image-container {
+  flex: 1;
+  max-width: 520px;
+  position: relative;
+}
+
+.chart-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.chart-base,
+.chart-overlay {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.6s ease;
+}
+
+.chart-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.chart-image-wrapper:hover .chart-base {
+  opacity: 0;
+}
+
+.chart-image-wrapper:hover .chart-overlay {
+  opacity: 1;
+}
+
+.planetary-data {
+  flex: 1;
+  max-width: 440px;
+}
+
+.tropical-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: #111;
+  margin: 0 0 32px;
+  text-align: center;
+}
+
+.planet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.planet-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 16px;
+}
+
+.planet-item:last-child {
+  border-bottom: none;
+}
+
+.planet-icon {
+  font-size: 18px;
+  color: #b14be2;
+  width: 24px;
+  text-align: center;
+  line-height: 1;
+}
+
+.planet-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #111;
+  width: 80px;
+}
+
+.sign-icon {
+  font-size: 16px;
+  color: #b14be2;
+  width: 20px;
+  text-align: center;
+  line-height: 1;
+}
+
+.sign-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #666;
+  flex: 1;
+}
+
+.sign-name.retrograde {
+  color: #b14be2;
+}
+
+@media (max-width:1180px) {
+  .chart-section-inner {
+    padding: 0 34px;
+  }
+
+  .chart-main-title {
+    font-size: 64px;
+  }
+
+  .chart-content {
+    gap: 90px;
+  }
+
+  .chart-description-text {
+    gap: 50px;
+  }
+}
+
+@media (max-width:980px) {
+  .chart-section {
+    padding: 100px 0 120px;
+  }
+
+  .chart-section-inner {
+    padding: 0 34px;
+  }
+
+  .chart-description-text {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+
+  .chart-content {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .chart-image-container,
+  .planetary-data {
+    max-width: none;
+  }
+
+  .chart-main-title {
+    font-size: 56px;
+    text-align: center;
+  }
+
+  .chart-title-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chart-image-container {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width:640px) {
+  .chart-section {
+    padding: 80px 0 100px;
+  }
+
+  .chart-section-inner {
+    padding: 0 24px;
+  }
+
+  .chart-header {
+    margin-bottom: 60px;
+  }
+
+  .chart-main-title {
+    font-size: 48px;
+    margin-bottom: 26px;
+  }
+
+  .chart-description-text {
+    margin-bottom: 40px;
+  }
+
+  .chart-description-text p {
+    font-size: 14px;
+  }
+
+  .chart-content {
+    gap: 50px;
+  }
+
+  .planet-item {
+    padding: 10px 0;
+    gap: 12px;
+  }
+
+  .planet-name {
+    width: 70px;
+    font-size: 11px;
+  }
+
+  .sign-name {
+    font-size: 11px;
+  }
+
+  .chart-image-container {
+    max-width: 380px;
+  }
+}
+
+.about-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 220px;
+  height: 16px;
+  position: relative;
+  margin: 0 0 46px;
+}
+
+.about-divider .ad-dot {
+  width: 6px;
+  height: 6px;
+  background: #111;
+  border-radius: 50%;
+  flex: 0 0 6px;
+}
+
+.about-divider .ad-line {
+  height: 1px;
+  background: #111;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.about-divider .ad-arrow {
+  width: 20px;
+  height: 1px;
+  background: #111;
+  position: relative;
+  flex: 0 0 20px;
+}
+
+.about-divider .ad-arrow:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 6px solid #111;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.about-intro-text h2 {
+  text-align: center;
+}
+
+.about-intro-text p {
+  max-width: 780px;
+}
+
+.about-meta {
+  justify-content: center;
+}
+
+.about-divider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-social {
+  justify-content: center;
+}
+
+.about-intro-image img {
+  max-width: 460px;
+}
+
+@media (max-width:640px) {
+  .about-intro {
+    padding: 120px 0 110px;
+  }
+
+  .about-intro-inner {
+    padding: 0 24px;
+    gap: 60px;
+  }
+
+  .about-intro-text h2 {
+    font-size: 52px;
+  }
+
+  .about-intro-text p {
+    font-size: 14px;
+  }
+
+  .about-meta {
+    gap: 26px;
+    font-size: 11px;
+  }
+
+  .about-social a {
+    width: 46px;
+    height: 46px;
+  }
+
+  .about-intro-image img {
+    max-width: 380px;
+  }
+}
+
+/* Minimal placeholder sections to satisfy anchors (can be removed when real sections exist) */
+.placeholder-section {
+  height: 1px;
+  overflow: hidden;
+}
