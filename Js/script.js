@@ -38,6 +38,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Simple slider for blog feature
+  const slider = document.querySelector('[data-slider]');
+  if (slider) {
+    const track = slider.querySelector('.sf-track');
+    const slides = Array.from(track.children);
+    const nav = slider.querySelector('.sf-nav');
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      if (i === 0) b.classList.add('active');
+      b.addEventListener('click', () => goTo(i));
+      nav.appendChild(b);
+    });
+    let index = 0;
+    let timer;
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      nav.querySelectorAll('button').forEach((b, bi) => b.classList.toggle('active', bi === index));
+      restart();
+    }
+    function next() { goTo(index + 1); }
+    function restart() { clearInterval(timer); timer = setInterval(next, 6000); }
+    restart();
+    window.addEventListener('visibilitychange', () => { if (document.hidden) clearInterval(timer); else restart(); });
+  }
+
   // Mega menu toggle (shared)
   const megaTrigger = document.querySelector('.mega-trigger');
   const megaMenu = document.querySelector('.mega-menu');
